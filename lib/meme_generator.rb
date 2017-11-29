@@ -1,8 +1,7 @@
-require "RMagick"
+require "rmagick"
 require "fileutils"
 
 class MemeGenerator
-  VERSION = "1.0.9"
 
   INTERLINE_SPACING_RATIO = 3
 
@@ -28,6 +27,11 @@ class MemeGenerator
     end
 
     def generate(path, top, bottom)
+      canvas = generate_canvas(path, top, bottom)
+      write_file(canvas)
+    end
+
+    def generate_canvas(path, top, bottom)
       top = (top || '').upcase
       bottom = (bottom || '').upcase
 
@@ -72,7 +76,10 @@ class MemeGenerator
           self.pointsize = pointsize * scale
         end
       end
+      canvas
+    end
 
+    def write_file(canvas)
       output_path = "/tmp/meme-#{Time.now.to_i}.jpeg"
       canvas.write(output_path)
       output_path

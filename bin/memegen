@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+require "meme_generator"
+
 $LOAD_PATH.unshift File.expand_path("lib")
 $LOAD_PATH.unshift File.expand_path("../lib")
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)

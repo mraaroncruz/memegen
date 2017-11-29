@@ -2,7 +2,7 @@
 lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
-require "meme_generator"
+require "meme_generator/version"
 
 Gem::Specification.new do |s|
   s.name        = "memegen"
@@ -13,15 +13,15 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/cmdrkeene/memegen"
   s.summary     = "Two-caption meme generator CLI"
   s.description = "Locally generate two-caption 'Advice Dog'-style meme images"
- 
+
   s.required_rubygems_version = ">= 1.3.6"
-  
+
   s.add_dependency("rmagick")
-  s.add_dependency("tinder", "1.4.4")
   s.add_dependency("multipart-post")
   s.add_dependency("highlight")
- 
+  s.add_development_dependency("pry")
+
   s.files        = Dir.glob("{bin,lib,generators,fonts,script}/**/*") + %w(LICENSE README.md)
   s.executables  = ['memegen']
-  s.require_path = 'lib'
+  s.require_paths = ["lib"]
 end
